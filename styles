@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fredoka One', cursive;;
+}
+body{
+    height: 100vh;
+    color: black;
+
+/* Centre gameboard */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+/* Change flex-direction from row to column to fix heading so it's stacked on top of gameboard instead of squashed to the left*/
+    flex-direction: column;
+}
+h1{
+    font-size: 60px;
+    font-weight: lighter;
+}
+.headings{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: lighter;
+    font-size: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 70vw;
+}
+.seconds{
+    color: hotpink;
+    font-size: 20px;
+}
+.bar{
+    position: absolute;
+    border-radius: 15px;
+    padding-top: 10px;
+    width: 500px;
+    height: 25px;
+    border: 2px lightgray solid;
+    background-color: greenyellow;
+    box-shadow: rgba(0,0,0,0.2) 0px 5px 10px;
+}
+.remaining-bar{
+    float: right;
+    background: lightgray;
+    height: 25px;
+}
+section{
+    display: grid;
+    grid-template-columns: repeat(6, 8rem);
+    grid-template-rows: repeat(3, 8rem);
+    grid-gap: 2rem;
+    /* Parent element has 'perspective' - Makes cards 3D */
+    perspective: 1000px;
+}
+.card{
+    /* Stack cards on top of each other */
+    position: relative;
+    /* Child element has preserve-3d */
+    transform-style: preserve-3d;
+    transition: all 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* box-shadow: rgba(0,0,0,0.2) 0px 5px 156px; */
+    background-color: transparent;
+    border-radius: 70px;
+}
+/* Stop images from overflowing */
+.face, 
+.back{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /* Unclickable */
+    pointer-events: none;
+}
+.back{
+    /* background-color: transparent; */
+    border-radius: 60px; 
+    background-color: rgb(241, 240, 240);
+    /* background-image: url('./images/click.png');
+    background-repeat: no-repeat;
+    background-position: center center;  */
+    box-shadow: rgba(0,0,0,0.2) 0px 5px 10px;
+    /* hide back of card */
+    backface-visibility: hidden;
+}
+.toggleCard{
+    transform: rotateY(180deg);
+}
+
